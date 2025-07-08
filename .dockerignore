@@ -16,3 +16,4 @@ dist
 README.md
 Dockerfile
 .dockerignore
+docker.env
