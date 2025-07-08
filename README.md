@@ -56,17 +56,16 @@ This project follows a clean and organized structure, ensuring maintainability a
 - **`tsconfig.json`** - TypeScript configuration file.  
 - **`vercel.json`** - Configuration for deployment on Vercel.  
 
-## 📚 Dokumentasi API
-Ringkasan endpoint yang tersedia.
+## 📚 API Documentation
+A summary of available endpoints.
 **Base URL:** `https://skill-test-be-minilemon.vercel.app/api`
 
 <details>
-<summary><code>GET /users</code> - <strong>Mendapatkan Semua Pengguna</strong></summary>
+<summary><code>GET /users</code> - <strong>Get All Users</strong></summary>
 
--   **Deskripsi:** Mengambil daftar semua pengguna yang ada di sistem.
--   **Headers:** `Authorization: Bearer <TOKEN>` (Wajib)
+-   **Description:** Retrieves a list of all users in the system.
 
--   **Contoh Respons Sukses (`200 OK`)**
+-   **Example Success Response (`200 OK`)**
     ```json
     {
       "success": true,
@@ -91,7 +90,7 @@ Ringkasan endpoint yang tersedia.
       }
     }
     ```
--   **Contoh Respons Error (`400`/`500`)**
+-   **Example Error Response (`400`/`500`)**
     ```json
     {
       "success": false,
@@ -101,9 +100,9 @@ Ringkasan endpoint yang tersedia.
 </details>
 
 <details>
-<summary><code>POST /users</code> - <strong>Membuat Pengguna Baru</strong></summary>
+<summary><code>POST /users</code> - <strong>Create a New User</strong></summary>
 
--   **Deskripsi:** Mendaftarkan seorang pengguna baru ke dalam sistem.
+-   **Description:** Registers a new user in the system.
 
 -   **Request Body (`application/json`)**
     ```json
@@ -115,7 +114,7 @@ Ringkasan endpoint yang tersedia.
       "departement": "Marketing"
     }
     ```
--   **Contoh Respons Sukses (`201 Created`)**
+-   **Example Success Response (`201 Created`)**
     ```json
     {
       "success": true,
@@ -131,7 +130,7 @@ Ringkasan endpoint yang tersedia.
       }
     }
     ```
--   **Contoh Respons Error (`400`/`500`)**
+-   **Example Error Response (`400`/`500`)**
     ```json
     {
       "success": false,
@@ -141,13 +140,12 @@ Ringkasan endpoint yang tersedia.
 </details>
 
 <details>
-<summary><code>GET /users/{id}</code> - <strong>Mendapatkan Pengguna Berdasarkan ID</strong></summary>
+<summary><code>GET /users/{id}</code> - <strong>Get User by ID</strong></summary>
 
--   **Deskripsi:** Mengambil detail satu pengguna spesifik.
--   **Headers:** `Authorization: Bearer <TOKEN>` (Wajib)
--   **Path Parameter:** `id` (integer) - ID unik pengguna.
+-   **Description:** Retrieves the details of a specific user.
+-   **Path Parameter:** `id` (integer) - The user's unique ID.
 
--   **Contoh Respons Sukses (`200 OK`)**
+-   **Example Success Response (`200 OK`)**
     ```json
     {
       "success": true,
@@ -163,7 +161,7 @@ Ringkasan endpoint yang tersedia.
       }
     }
     ```
--   **Contoh Respons Error (`400`/`500`)**
+-   **Example Error Response (`400`/`500`)**
     ```json
     {
       "success": false,
@@ -173,11 +171,10 @@ Ringkasan endpoint yang tersedia.
 </details>
 
 <details>
-<summary><code>PUT /users/{id}</code> - <strong>Memperbarui Pengguna</strong></summary>
+<summary><code>PUT /users/{id}</code> - <strong>Update a User</strong></summary>
 
--   **Deskripsi:** Memperbarui data seorang pengguna spesifik.
--   **Headers:** `Authorization: Bearer <TOKEN>` (Wajib)
--   **Path Parameter:** `id` (integer) - ID unik pengguna.
+-   **Description:** Updates the data of a specific user.
+-   **Path Parameter:** `id` (integer) - The unique ID of the user to update.
 
 -   **Request Body (`application/json`)**
     ```json
@@ -186,7 +183,7 @@ Ringkasan endpoint yang tersedia.
       "status": false
     }
     ```
--   **Contoh Respons Sukses (`200 OK`)**
+-   **Example Success Response (`200 OK`)**
     ```json
     {
       "success": true,
@@ -202,7 +199,7 @@ Ringkasan endpoint yang tersedia.
       }
     }
     ```
--   **Contoh Respons Error (`400`/`500`)**
+-   **Example Error Response (`400`/`500`)**
     ```json
     {
       "success": false,
@@ -212,15 +209,14 @@ Ringkasan endpoint yang tersedia.
 </details>
 
 <details>
-<summary><code>DELETE /users/{id}</code> - <strong>Menghapus Pengguna</strong></summary>
+<summary><code>DELETE /users/{id}</code> - <strong>Delete a User</strong></summary>
 
--   **Deskripsi:** Menghapus pengguna spesifik dari sistem.
--   **Headers:** `Authorization: Bearer <TOKEN>` (Wajib)
--   **Path Parameter:** `id` (integer) - ID unik pengguna.
+-   **Description:** Deletes a specific user from the system.
+-   **Path Parameter:** `id` (integer) - The unique ID of the user to delete.
 
--   **Contoh Respons Sukses (`204 No Content`)**
-    -   Body respons kosong.
--   **Contoh Respons Error (`400`/`500`)**
+-   **Example Success Response (`204 No Content`)**
+    -   The response body is empty.
+-   **Example Error Response (`400`/`500`)**
     ```json
     {
       "success": false,
