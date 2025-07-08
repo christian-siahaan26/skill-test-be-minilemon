@@ -57,7 +57,8 @@ This project follows a clean and organized structure, ensuring maintainability a
 - **`vercel.json`** - Configuration for deployment on Vercel.  
 
 ## 📚 API Documentation
-A summary of available endpoints.
+A summary of available endpoints. For complete details, visit **[Halaman Swagger](http://localhost:8080/api-docs/)**.
+
 **Base URL:** `https://skill-test-be-minilemon.vercel.app/api`
 
 <details>
