@@ -9,16 +9,22 @@ const swaggerUICss =
 export function setupSwagger(app: Express) {
   const swaggerFilePath = path.join(process.cwd(), "src/docs/swagger.json");
   const swaggerDocument = JSON.parse(fs.readFileSync(swaggerFilePath, "utf-8"));
-  // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+  // Opsi untuk menunjuk ke aset lokal kita di folder /public
+  const options = {
+    customCssUrl: '/swagger-ui/swagger-ui.css',
+    customJs: [
+      '/swagger-ui/swagger-ui-bundle.js',
+      '/swagger-ui/swagger-ui-standalone-preset.js'
+    ],
+  };
+  
+  // Gunakan opsi baru di dalam setup
   app.use(
     "/api-docs",
     swaggerUi.serve,
-    swaggerUi.setup(swaggerDocument, {
-      customCss:
-        ".swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }",
-      customCssUrl: swaggerUICss,
-    })
+    swaggerUi.setup(swaggerDocument, options)
   );
 
-  console.log("📚 Swagger docs available at http://localhost:3000/api-docs");
+  console.log("📚 Swagger docs available at /api-docs");
 }
