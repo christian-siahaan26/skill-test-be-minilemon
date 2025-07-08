@@ -56,20 +56,47 @@ This project follows a clean and organized structure, ensuring maintainability a
 - **`tsconfig.json`** - TypeScript configuration file.  
 - **`vercel.json`** - Configuration for deployment on Vercel.  
 
-## API Endpoints
-
 ## 📚 Dokumentasi API
-Berikut adalah ringkasan endpoint yang tersedia. Untuk detail lengkap, kunjungi **[Halaman Swagger](https://skill-test-be-minilemon.vercel.app/api-docs)**.
+Ringkasan endpoint yang tersedia.
+**Base URL:** `https://skill-test-be-minilemon.vercel.app/api`
 
 <details>
 <summary><code>GET /users</code> - <strong>Mendapatkan Semua Pengguna</strong></summary>
 
 -   **Deskripsi:** Mengambil daftar semua pengguna yang ada di sistem.
 -   **Headers:** `Authorization: Bearer <TOKEN>` (Wajib)
--   **Contoh cURL:**
-    ```bash
-    curl -X GET '[https://skill-test-be-minilemon.vercel.app/api/users](https://skill-test-be-minilemon.vercel.app/api/users)' \
-    -H 'Authorization: Bearer <YOUR_JWT_TOKEN>'
+
+-   **Contoh Respons Sukses (`200 OK`)**
+    ```json
+    {
+      "success": true,
+      "message": "Users retrieved successfully",
+      "data": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "email": "john.doe@example.com",
+          "no_hp": "081234567890",
+          "status": true,
+          "departement": "Technology",
+          "createdAt": "2025-07-08T10:00:00.000Z"
+        }
+      ],
+      "meta": {
+        "total": 1,
+        "page": 1,
+        "lastPage": 1,
+        "hasNextPage": false,
+        "hasPrevPage": false
+      }
+    }
+    ```
+-   **Contoh Respons Error (`400`/`500`)**
+    ```json
+    {
+      "success": false,
+      "message": "Error message description."
+    }
     ```
 </details>
 
@@ -77,82 +104,128 @@ Berikut adalah ringkasan endpoint yang tersedia. Untuk detail lengkap, kunjungi 
 <summary><code>POST /users</code> - <strong>Membuat Pengguna Baru</strong></summary>
 
 -   **Deskripsi:** Mendaftarkan seorang pengguna baru ke dalam sistem.
--   **Request Body:** (`application/json`)
+
+-   **Request Body (`application/json`)**
     ```json
     {
-      "name": "John Doe",
-      "email": "john.doe@example.com",
-      "no_hp": "081234567890",
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "no_hp": "081234567891",
       "status": true,
-      "departement": "Technology"
+      "departement": "Marketing"
     }
     ```
--   **Contoh cURL:**
-    ```bash
-    curl -X POST '[https://skill-test-be-minilemon.vercel.app/api/users](https://skill-test-be-minilemon.vercel.app/api/users)' \
-    -H 'Content-Type: application/json' \
-    -d '{
-          "name": "John Doe",
-          "email": "john.doe@example.com",
-          "no_hp": "081234567890",
-          "status": true,
-          "departement": "Technology"
-        }'
+-   **Contoh Respons Sukses (`201 Created`)**
+    ```json
+    {
+      "success": true,
+      "message": "User created successfully",
+      "data": {
+        "id": 2,
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "no_hp": "081234567891",
+        "status": true,
+        "departement": "Marketing",
+        "createdAt": "2025-07-08T10:05:00.000Z"
+      }
+    }
+    ```
+-   **Contoh Respons Error (`400`/`500`)**
+    ```json
+    {
+      "success": false,
+      "message": "Error message description."
+    }
     ```
 </details>
 
 <details>
 <summary><code>GET /users/{id}</code> - <strong>Mendapatkan Pengguna Berdasarkan ID</strong></summary>
 
--   **Deskripsi:** Mengambil detail satu pengguna spesifik berdasarkan ID-nya.
+-   **Deskripsi:** Mengambil detail satu pengguna spesifik.
 -   **Headers:** `Authorization: Bearer <TOKEN>` (Wajib)
--   **Path Parameters:** `id` (integer) - ID unik dari pengguna.
--   **Contoh cURL:**
-    ```bash
-    curl -X GET '[https://skill-test-be-minilemon.vercel.app/api/users/1](https://skill-test-be-minilemon.vercel.app/api/users/1)' \
-    -H 'Authorization: Bearer <YOUR_JWT_TOKEN>'
+-   **Path Parameter:** `id` (integer) - ID unik pengguna.
+
+-   **Contoh Respons Sukses (`200 OK`)**
+    ```json
+    {
+      "success": true,
+      "message": "User retrieved successfully",
+      "data": {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "no_hp": "081234567890",
+        "status": true,
+        "departement": "Technology",
+        "createdAt": "2025-07-08T10:00:00.000Z"
+      }
+    }
+    ```
+-   **Contoh Respons Error (`400`/`500`)**
+    ```json
+    {
+      "success": false,
+      "message": "Error message description."
+    }
     ```
 </details>
 
 <details>
 <summary><code>PUT /users/{id}</code> - <strong>Memperbarui Pengguna</strong></summary>
 
--   **Deskripsi:** Memperbarui data seorang pengguna spesifik berdasarkan ID-nya.
+-   **Deskripsi:** Memperbarui data seorang pengguna spesifik.
 -   **Headers:** `Authorization: Bearer <TOKEN>` (Wajib)
--   **Path Parameters:** `id` (integer) - ID unik dari pengguna yang akan diperbarui.
--   **Request Body:** (`application/json`)
+-   **Path Parameter:** `id` (integer) - ID unik pengguna.
+
+-   **Request Body (`application/json`)**
     ```json
     {
       "name": "John Doe Updated",
-      "email": "john.doe.new@example.com",
-      "no_hp": "081111111111",
-      "status": false,
-      "departement": "Marketing"
+      "status": false
     }
     ```
--   **Contoh cURL:**
-    ```bash
-    curl -X PUT '[https://skill-test-be-minilemon.vercel.app/api/users/1](https://skill-test-be-minilemon.vercel.app/api/users/1)' \
-    -H 'Authorization: Bearer <YOUR_JWT_TOKEN>' \
-    -H 'Content-Type: application/json' \
-    -d '{
-          "name": "John Doe Updated",
-          "status": false
-        }'
+-   **Contoh Respons Sukses (`200 OK`)**
+    ```json
+    {
+      "success": true,
+      "message": "Success update user",
+      "data": {
+        "id": 1,
+        "name": "John Doe Updated",
+        "email": "john.doe@example.com",
+        "no_hp": "081234567890",
+        "status": false,
+        "departement": "Technology",
+        "createdAt": "2025-07-08T10:00:00.000Z"
+      }
+    }
+    ```
+-   **Contoh Respons Error (`400`/`500`)**
+    ```json
+    {
+      "success": false,
+      "message": "Error message description."
+    }
     ```
 </details>
 
 <details>
 <summary><code>DELETE /users/{id}</code> - <strong>Menghapus Pengguna</strong></summary>
 
--   **Deskripsi:** Menghapus seorang pengguna spesifik dari sistem berdasarkan ID-nya.
+-   **Deskripsi:** Menghapus pengguna spesifik dari sistem.
 -   **Headers:** `Authorization: Bearer <TOKEN>` (Wajib)
--   **Path Parameters:** `id` (integer) - ID unik dari pengguna yang akan dihapus.
--   **Respons Sukses:** `204 No Content` (Tidak ada body respons).
--   **Contoh cURL:**
-    ```bash
-    curl -X DELETE '[https://skill-test-be-minilemon.vercel.app/api/users/1](https://skill-test-be-minilemon.vercel.app/api/users/1)' \
-    -H 'Authorization: Bearer <YOUR_JWT_TOKEN>'
+-   **Path Parameter:** `id` (integer) - ID unik pengguna.
+
+-   **Contoh Respons Sukses (`204 No Content`)**
+    -   Body respons kosong.
+-   **Contoh Respons Error (`400`/`500`)**
+    ```json
+    {
+      "success": false,
+      "message": "Error message description."
+    }
     ```
 </details>
 
