@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://be-skill-test-backend.vercel.app/api",
+      "url": "https://skill-test-be-minilemon.vercel.app/api",
       "description": "Production server"
     }
   ],
@@ -35,7 +35,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean" },
+                    "success": { "type": "boolean", "default": false },
                     "message": { "type": "string" }
                   }
                 }
@@ -49,7 +49,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean" },
+                    "success": { "type": "boolean", "default": false },
                     "message": { "type": "string" }
                   }
                 }
@@ -127,6 +127,7 @@
     },
     "/users/{id}": {
       "get": {
+        "summary": "Get user by id",
         "tags": ["Users"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
@@ -161,7 +162,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean" },
+                    "success": { "type": "boolean", "default": false },
                     "message": { "type": "string" }
                   }
                 }
@@ -175,7 +176,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean" },
+                    "success": { "type": "boolean", "default": false },
                     "message": { "type": "string" }
                   }
                 }

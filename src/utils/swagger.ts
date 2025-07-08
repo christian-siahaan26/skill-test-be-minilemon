@@ -7,7 +7,7 @@ const swaggerUICss =
   "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css";
 
 export function setupSwagger(app: Express) {
-  const swaggerFilePath = path.resolve(__dirname, "../docs/swagger.json");
+  const swaggerFilePath = path.join(process.cwd(), "src/docs/swagger.json");
   const swaggerDocument = JSON.parse(fs.readFileSync(swaggerFilePath, "utf-8"));
   // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   app.use(

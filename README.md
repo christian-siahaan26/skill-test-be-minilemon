@@ -78,7 +78,7 @@ This project follows a clean and organized structure, ensuring maintainability a
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/christian-siahaan26/Skill-Test-BackEnd-Minilemon
+git clone https://github.com/christian-siahaan26/skill-test-be-minilemon
 ```
 
 2. Navigate to the project directory:

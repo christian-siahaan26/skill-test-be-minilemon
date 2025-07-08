@@ -1,0 +1,18 @@
+# Abaikan dependensi lokal, karena akan diinstal di dalam container
+node_modules
+
+# Abaikan file log
+npm-debug.log
+
+# Abaikan file environment, ini harus diatur saat container berjalan
+.env
+
+# Folder build lokal (jika ada)
+dist
+
+# File sistem dan konfigurasi lainnya
+.git
+.gitignore
+README.md
+Dockerfile
+.dockerignore
