@@ -10,7 +10,6 @@ export function setupSwagger(app: Express) {
   const swaggerFilePath = path.join(process.cwd(), "src/docs/swagger.json");
   const swaggerDocument = JSON.parse(fs.readFileSync(swaggerFilePath, "utf-8"));
 
-  // Opsi untuk menunjuk ke aset lokal kita di folder /public
   const options = {
     customCssUrl: '/swagger-ui/swagger-ui.css',
     customJs: [
@@ -19,7 +18,6 @@ export function setupSwagger(app: Express) {
     ],
   };
   
-  // Gunakan opsi baru di dalam setup
   app.use(
     "/api-docs",
     swaggerUi.serve,
