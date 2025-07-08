@@ -226,6 +226,21 @@ A summary of available endpoints. For complete details, visit **[Swagger Page](h
     ```
 </details>
 
+### Using Docker
+This method runs the application in an isolated container, simulating a production environment.
+
+1.  Make sure Docker Desktop is running.
+2.  Create a `docker.env` file and fill it with the required environment variables.
+3.  **Build the Docker Image:**
+    ```sh
+    docker build -t minilemon-be .
+    ```
+4.  **Run the Docker Container:**
+    ```sh
+    docker run --name minilemon-app -p 8080:3000 -d --env-file ./docker.env minilemon-be
+    ```
+The application running inside the container will be accessible at **`http://localhost:8080`**. You can directly test endpoints like `http://localhost:8080/api/users` or `http://localhost:8080/api-docs`.
+
 ## Getting Started
 
 ### Prerequisites
