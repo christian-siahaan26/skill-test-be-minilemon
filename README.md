@@ -244,7 +244,7 @@ git clone https://github.com/christian-siahaan26/skill-test-be-minilemon
 2. Navigate to the project directory:
 
 ```sh
-cd skill-test-backend
+cd skill-test-be-minilemon
 ```
 
 3. Install dependencies:
@@ -282,7 +282,7 @@ npx prisma migrate dev
 1. Start the development server:
 
 ```sh
-npm start
+npm run dev
 ```
 
 ## Contributing
